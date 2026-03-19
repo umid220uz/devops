@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DevOps Roadmap — Strong Junior за 2 месяца</title>
+<style>
+/* ════════════════════════════════════════
+   RESET & BASE
+════════════════════════════════════════ */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+  background:#060b14;color:#cdd9f0;
+  line-height:1.6;min-height:100vh;overflow-x:hidden;
+}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#060b14}
+::-webkit-scrollbar-thumb{background:#1e2d4a;border-radius:3px}
+a{text-decoration:none;color:inherit}
+
+/* ════════════════════════════════════════
+   CSS VARIABLES
+════════════════════════════════════════ */
+:root{
+  --bg:    #060b14;
+  --bg2:   #0a1120;
+  --bg3:   #0e1829;
+  --card:  #0b1422;
+  --card2: #0d1830;
+  --brd:   #162035;
+  --brd2:  #1e3058;
+  --text:  #cdd9f0;
+  --muted: #4a6080;
+  --dim:   #2a3d5a;
+
+  --blue:   #3d9bff;
+  --blue2:  #5ab0ff;
+  --green:  #2de89a;
+  --green2: #4dfaaa;
+  --purple: #a67cff;
+  --purple2:#bf9fff;
+  --orange: #ff8c42;
+  --orange2:#ffaa6a;
+  --red:    #ff5c72;
+  --red2:   #ff7a8a;
+  --teal:   #18dce8;
+  --teal2:  #40eaf5;
+  --yellow: #ffd84d;
+  --yellow2:#ffe680;
+  --pink:   #f06fba;
+  --pink2:  #f590cc;
+  --cyan:   #22d3ee;
+
+  --gb: rgba(61,155,255,.12);
+  --gg: rgba(45,232,154,.12);
+  --gp: rgba(166,124,255,.12);
+  --go: rgba(255,140,66,.12);
+  --gr: rgba(255,92,114,.12);
+  --gt: rgba(24,220,232,.12);
+  --gy: rgba(255,216,77,.12);
+  --gpk:rgba(240,111,186,.12);
+}
+
+/* ════════════════════════════════════════
+   NAV
+════════════════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  height:62px;padding:0 2rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  background:rgba(6,11,20,.95);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--brd);
+}
+.logo{
+  display:flex;align-items:center;gap:.6rem;
+  font-size:1.1rem;font-weight:900;letter-spacing:-.5px;white-space:nowrap;
+}
+.logo-icon{
+  width:32px;height:32px;border-radius:8px;
+  background:linear-gradient(135deg,var(--blue),var(--green));
+  display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;font-weight:900;color:#fff;flex-shrink:0;
+}
+.logo .d{color:var(--blue)}.logo .o{color:var(--green)}
+.logo .yr{
+  font-size:.72rem;font-weight:500;color:var(--muted);
+  background:var(--bg3);border:1px solid var(--brd);
+  padding:.1rem .5rem;border-radius:4px;margin-left:.2rem;
+}
+.nav-center{display:flex;gap:.2rem;list-style:none;overflow-x:auto}
+.nav-center a{
+  color:var(--muted);font-size:.78rem;padding:.35rem .7rem;
+  border-radius:6px;transition:all .2s;white-space:nowrap;
+}
+.nav-center a:hover{color:var(--text);background:var(--bg3)}
+.nav-right{display:flex;align-items:center;gap:.6rem}
+.gh-link{
+  display:inline-flex;align-items:center;gap:.35rem;
+  background:var(--bg3);border:1px solid var(--brd);
+  color:var(--yellow);font-size:.75rem;font-weight:700;
+  padding:.3rem .8rem;border-radius:6px;transition:all .2s;white-space:nowrap;
+}
+.gh-link:hover{border-color:var(--yellow);background:var(--gy)}
+.week-badge{
+  display:inline-flex;align-items:center;gap:.3rem;
+  background:var(--gb);border:1px solid rgba(61,155,255,.3);
+  color:var(--blue2);font-size:.72rem;font-weight:700;
+  padding:.28rem .7rem;border-radius:6px;white-space:nowrap;
+}
+
+/* ════════════════════════════════════════
+   HERO
+════════════════════════════════════════ */
+.hero{
+  padding:100px 2rem 0;
+  position:relative;overflow:hidden;
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+}
+/* animated gradient orbs */
+.orb{
+  position:absolute;border-radius:50%;filter:blur(80px);
+  pointer-events:none;animation:orbFloat 8s ease-in-out infinite;
+}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(61,155,255,.18),transparent 70%);top:-100px;left:-100px;animation-delay:0s}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(45,232,154,.14),transparent 70%);bottom:50px;right:-80px;animation-delay:-3s}
+.orb3{width:300px;height:300px;background:radial-gradient(circle,rgba(166,124,255,.12),transparent 70%);top:40%;left:50%;animation-delay:-6s}
+@keyframes orbFloat{
+  0%,100%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-30px) scale(1.05)}
+}
+
+/* grid dots bg */
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(rgba(61,155,255,.15) 1px,transparent 1px);
+  background-size:32px 32px;pointer-events:none;
+  -webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 40%,transparent 100%);
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 40%,transparent 100%);
+}
+
+.hero-inner{
+  position:relative;z-index:2;max-width:900px;margin:0 auto;
+  text-align:center;padding-bottom:4rem;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(61,155,255,.1);border:1px solid rgba(61,155,255,.3);
+  color:var(--blue2);font-size:.74rem;font-weight:700;
+  padding:.35rem 1.1rem;border-radius:99px;margin-bottom:1.8rem;
+  text-transform:uppercase;letter-spacing:.1em;
+}
+.hero-tag .dot{
+  width:7px;height:7px;border-radius:50%;background:var(--green);
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+
+.hero h1{
+  font-size:clamp(2.2rem,5.5vw,4.2rem);
+  font-weight:900;letter-spacing:-2px;line-height:1.05;
+  margin-bottom:1.4rem;
+}
+.hero h1 .line2{
+  background:linear-gradient(90deg,var(--blue),var(--teal),var(--green));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  display:inline-block;
+}
+.hero h1 .line3{
+  background:linear-gradient(90deg,var(--green),var(--yellow));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  display:inline-block;
+}
+.hero-sub{
+  font-size:1.05rem;color:var(--muted);max-width:580px;margin:0 auto 2.5rem;
+}
+
+.hero-btns{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.7rem 1.6rem;border-radius:10px;font-size:.9rem;font-weight:700;
+  cursor:pointer;border:none;transition:all .2s;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{
+  background:linear-gradient(135deg,var(--blue),#2a7fff);
+  color:#fff;box-shadow:0 4px 24px rgba(61,155,255,.4);
+}
+.btn-primary:hover{box-shadow:0 6px 32px rgba(61,155,255,.6)}
+.btn-green{
+  background:linear-gradient(135deg,var(--green),#1bc877);
+  color:#051a10;box-shadow:0 4px 24px rgba(45,232,154,.35);
+}
+.btn-green:hover{box-shadow:0 6px 32px rgba(45,232,154,.5)}
+.btn-ghost{
+  background:transparent;color:var(--text);
+  border:1px solid var(--brd2);
+}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue);background:var(--gb)}
+
+/* hero stats pills */
+.hero-pills{
+  display:flex;justify-content:center;gap:.7rem;flex-wrap:wrap;
+}
+.hpill{
+  display:flex;align-items:center;gap:.5rem;
+  background:rgba(255,255,255,.04);border:1px solid var(--brd);
+  border-radius:10px;padding:.55rem 1rem;
+  font-size:.82rem;
+}
+.hpill-val{font-weight:800;font-size:1rem}
+.hpill-lbl{color:var(--muted);font-size:.72rem}
+
+/* ════════════════════════════════════════
+   TIMELINE (2-MONTH PLAN)
+════════════════════════════════════════ */
+.timeline-section{
+  background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 50%,var(--bg) 100%);
+  padding:6rem 2rem;
+}
+.wrap{max-width:1120px;margin:0 auto;padding:0 1.5rem}
+.sec-header{margin-bottom:3rem}
+.sec-pre{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-size:.7rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.12em;margin-bottom:.6rem;
+}
+.sec-pre .line{width:24px;height:2px;border-radius:2px}
+.sec-title{font-size:2rem;font-weight:900;letter-spacing:-.5px;margin-bottom:.5rem}
+.sec-desc{color:var(--muted);font-size:.92rem;max-width:600px}
+
+/* week cards */
+.weeks-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.2rem;
+}
+.week-card{
+  background:var(--card);border:1px solid var(--brd);border-radius:16px;
+  padding:1.5rem;transition:all .3s;cursor:default;position:relative;overflow:hidden;
+}
+.week-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--accent-grad);
+}
+.week-card:hover{border-color:var(--brd2);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.4)}
+.week-head{display:flex;align-items:flex-start;justify-content:space-between;gap:.8rem;margin-bottom:.9rem}
+.week-num{
+  font-size:.7rem;font-weight:800;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--muted);margin-bottom:.25rem;
+}
+.week-title{font-size:1rem;font-weight:800;line-height:1.2}
+.week-icon{font-size:1.8rem;opacity:.9}
+.week-desc{font-size:.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.5}
+.week-topics{display:flex;flex-direction:column;gap:.3rem}
+.wtopic{
+  display:flex;align-items:center;gap:.5rem;
+  font-size:.8rem;padding:.3rem .5rem;border-radius:6px;
+  background:rgba(255,255,255,.025);border:1px solid transparent;
+}
+.wtopic-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.week-goal{
+  margin-top:1rem;padding:.65rem .9rem;border-radius:8px;
+  background:rgba(255,255,255,.03);border-left:3px solid;
+  font-size:.78rem;line-height:1.4;
+}
+.week-goal strong{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.15rem;opacity:.7}
+
+/* month headers */
+.month-label{
+  display:flex;align-items:center;gap:1rem;
+  margin-bottom:1.4rem;
+}
+.month-label span{
+  font-size:1.05rem;font-weight:900;letter-spacing:-.3px;
+}
+.month-line{flex:1;height:1px;background:var(--brd)}
+
+/* ════════════════════════════════════════
+   ROADMAP STEPS
+════════════════════════════════════════ */
+.roadmap-section{padding:6rem 2rem;background:var(--bg)}
+
+.steps{display:flex;flex-direction:column;gap:0}
+.step{
+  display:grid;grid-template-columns:80px 1fr;
+  position:relative;
+}
+.spine{display:flex;flex-direction:column;align-items:center;padding-top:1.5rem}
+.snum{
+  width:44px;height:44px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:.88rem;flex-shrink:0;
+  border:2px solid;position:relative;z-index:1;
+  transition:all .25s;cursor:default;
+}
+.snum .glow{
+  position:absolute;inset:-4px;border-radius:14px;
+  opacity:0;transition:opacity .3s;
+  filter:blur(8px);
+}
+.step:hover .snum .glow{opacity:.5}
+.step:hover .snum{transform:scale(1.08)}
+.sline{
+  width:2px;flex:1;min-height:28px;
+  background:linear-gradient(180deg,var(--brd2) 0%,var(--brd) 100%);
+  margin-top:6px;
+}
+.step:last-child .sline{display:none}
+
+.sbody{padding:1.5rem 0 2.2rem .75rem}
+.step-top{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:1rem;margin-bottom:.3rem;flex-wrap:wrap;
+}
+.stitle{font-size:1.05rem;font-weight:800;letter-spacing:-.3px}
+.stopik{font-size:.78rem;color:var(--muted);margin-bottom:.5rem;font-style:italic}
+.sdesc{font-size:.84rem;color:var(--muted);margin-bottom:1rem;max-width:650px;line-height:1.6}
+
+.tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1rem}
+.tag{
+  font-size:.69rem;font-weight:700;padding:.2rem .65rem;
+  border-radius:5px;letter-spacing:.03em;
+}
+
+/* resource table */
+.rtable-wrap{
+  background:var(--card2);border:1px solid var(--brd);
+  border-radius:12px;overflow:hidden;
+}
+.rtable{width:100%;border-collapse:collapse;font-size:.83rem}
+.rtable tr{border-bottom:1px solid var(--brd);transition:background .15s}
+.rtable tr:last-child{border-bottom:none}
+.rtable tr:hover{background:rgba(61,155,255,.04)}
+.rtable td{padding:.65rem .85rem;vertical-align:middle}
+.rtable td:first-child{line-height:1.4}
+.rtable td:last-child{width:95px;text-align:right}
+.rtable a{color:var(--text);transition:color .15s}
+.rtable a:hover{color:var(--blue2)}
+.star-row{background:rgba(255,216,77,.04)!important}
+.star-row:hover{background:rgba(255,216,77,.07)!important}
+.star-label{
+  font-size:.68rem;font-weight:800;color:var(--yellow);
+  text-transform:uppercase;letter-spacing:.06em;margin-right:.4rem;
+}
+.rbadge{
+  display:inline-flex;align-items:center;gap:.25rem;
+  font-size:.68rem;font-weight:700;padding:.15rem .5rem;
+  border-radius:5px;white-space:nowrap;
+}
+.rv{background:rgba(255,92,114,.15);color:var(--red2)}
+.rd{background:rgba(61,155,255,.15);color:var(--blue2)}
+.rb{background:rgba(166,124,255,.15);color:var(--purple2)}
+.rc{background:rgba(45,232,154,.15);color:var(--green2)}
+
+.more-toggle{
+  margin-top:.6rem;background:none;
+  border:1px solid var(--brd);color:var(--muted);
+  font-size:.74rem;padding:.28rem .8rem;border-radius:7px;
+  cursor:pointer;transition:all .2s;
+}
+.more-toggle:hover{border-color:var(--blue);color:var(--blue2);background:var(--gb)}
+
+/* difficulty badge */
+.diff{
+  display:inline-flex;align-items:center;gap:.3rem;
+  font-size:.68rem;font-weight:700;padding:.18rem .65rem;
+  border-radius:5px;white-space:nowrap;flex-shrink:0;
+}
+
+/* ════════════════════════════════════════
+   TOOLS GRID
+════════════════════════════════════════ */
+.tools-section{
+  padding:6rem 2rem;
+  background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);
+}
+.tgrid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;
+}
+.tcard{
+  background:var(--card);border:1px solid var(--brd);border-radius:14px;
+  padding:1.2rem;transition:all .25s;overflow:hidden;position:relative;
+}
+.tcard::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:var(--t-accent);opacity:0;transition:opacity .3s;
+}
+.tcard:hover{border-color:var(--brd2);transform:translateY(-3px)}
+.tcard:hover::after{opacity:1}
+.tcat{
+  font-size:.67rem;font-weight:800;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--muted);margin-bottom:.7rem;
+  display:flex;align-items:center;gap:.4rem;
+}
+.tcat::after{content:'';flex:1;height:1px;background:var(--brd)}
+.tpills{display:flex;flex-wrap:wrap;gap:.4rem}
+.tpill{
+  background:var(--bg3);border:1px solid var(--brd);
+  color:var(--dim);font-size:.74rem;font-weight:600;
+  padding:.22rem .65rem;border-radius:6px;transition:all .2s;
+}
+.tpill:hover{color:var(--text)}
+.tpill.rec{
+  border-color:rgba(61,155,255,.4);color:var(--blue2);
+  background:rgba(61,155,255,.08);
+  position:relative;
+}
+.tpill.rec::before{
+  content:'★';font-size:.55rem;position:absolute;
+  top:-4px;right:-4px;color:var(--yellow);
+}
+
+/* ════════════════════════════════════════
+   BOOKS
+════════════════════════════════════════ */
+.books-section{padding:6rem 2rem;background:var(--bg)}
+.bgrid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;
+}
+.bcard{
+  background:var(--card);border:1px solid var(--brd);border-radius:14px;
+  padding:1.5rem;display:flex;flex-direction:column;gap:.5rem;
+  transition:all .25s;position:relative;overflow:hidden;
+}
+.bcard::before{
+  content:'';position:absolute;inset:0;
+  background:var(--b-glow);opacity:0;transition:opacity .3s;
+  pointer-events:none;
+}
+.bcard:hover{border-color:var(--brd2);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.5)}
+.bcard:hover::before{opacity:1}
+.bicon{font-size:2rem;margin-bottom:.2rem}
+.btitle{font-size:.92rem;font-weight:800;color:var(--text);line-height:1.3}
+.bsub{font-size:.74rem;color:var(--muted);line-height:1.4}
+.bread{
+  display:inline-flex;align-items:center;gap:.3rem;
+  font-size:.72rem;font-weight:700;color:var(--blue);
+  margin-top:.5rem;transition:gap .2s;
+}
+.bcard:hover .bread{gap:.5rem}
+
+/* ════════════════════════════════════════
+   SKILLS MATRIX
+════════════════════════════════════════ */
+.skills-section{
+  padding:6rem 2rem;
+  background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%);
+}
+.skills-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;
+}
+.skill-card{
+  background:var(--card);border:1px solid var(--brd);border-radius:14px;
+  padding:1.3rem;
+}
+.skill-head{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:.8rem;
+}
+.skill-name{font-size:.88rem;font-weight:800}
+.skill-level{
+  font-size:.65rem;font-weight:800;text-transform:uppercase;
+  letter-spacing:.08em;padding:.15rem .55rem;border-radius:4px;
+}
+.sl-must{background:rgba(45,232,154,.15);color:var(--green2)}
+.sl-good{background:rgba(61,155,255,.15);color:var(--blue2)}
+.sl-bonus{background:rgba(166,124,255,.15);color:var(--purple2)}
+
+.skill-bars{display:flex;flex-direction:column;gap:.45rem}
+.sbar-row{display:flex;align-items:center;gap:.6rem;font-size:.74rem;color:var(--muted)}
+.sbar-lbl{width:90px;flex-shrink:0;font-size:.72rem}
+.sbar-track{flex:1;height:5px;background:var(--brd);border-radius:99px;overflow:hidden}
+.sbar-fill{height:100%;border-radius:99px;transition:width 1s ease}
+
+/* ════════════════════════════════════════
+   PROGRESS / CHECKLIST
+════════════════════════════════════════ */
+.progress-section{padding:6rem 2rem;background:var(--bg)}
+
+.prog-header{
+  background:var(--card);border:1px solid var(--brd);border-radius:16px;
+  padding:1.75rem 2rem;margin-bottom:2rem;
+  display:grid;grid-template-columns:1fr auto auto;gap:1.5rem;align-items:center;
+  flex-wrap:wrap;
+}
+.prog-meta h3{font-size:1rem;font-weight:800;margin-bottom:.25rem}
+.prog-meta p{font-size:.8rem;color:var(--muted)}
+.prog-bar-block{flex:1;min-width:200px}
+.bar-track{height:10px;background:var(--brd);border-radius:99px;overflow:hidden;margin:.5rem 0 .3rem}
+.bar-fill{
+  height:100%;border-radius:99px;
+  background:linear-gradient(90deg,var(--blue),var(--teal),var(--green));
+  transition:width .6s cubic-bezier(.4,0,.2,1);
+}
+.bar-lbl{font-size:.72rem;color:var(--muted)}
+.prog-pct{
+  font-size:2.4rem;font-weight:900;
+  background:linear-gradient(135deg,var(--blue),var(--green));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  white-space:nowrap;
+}
+
+/* category headers in checklist */
+.check-cat{
+  display:flex;align-items:center;gap:.75rem;
+  margin:1.5rem 0 .65rem;
+}
+.check-cat-label{
+  font-size:.72rem;font-weight:800;text-transform:uppercase;
+  letter-spacing:.1em;white-space:nowrap;
+}
+.check-cat-line{flex:1;height:1px;background:var(--brd)}
+
+.cgrid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.5rem;
+}
+.citem{
+  display:flex;align-items:flex-start;gap:.7rem;
+  background:var(--card);border:1px solid var(--brd);border-radius:9px;
+  padding:.65rem .9rem;cursor:pointer;transition:all .2s;user-select:none;
+}
+.citem:hover{border-color:var(--brd2)}
+.citem input[type=checkbox]{
+  width:15px;height:15px;accent-color:var(--green);
+  flex-shrink:0;margin-top:.22rem;cursor:pointer;
+}
+.citem label{font-size:.81rem;cursor:pointer;line-height:1.35;color:var(--text)}
+.citem.done{opacity:.32}
+.citem.done label{text-decoration:line-through;color:var(--muted)}
+.citem.done{border-color:rgba(45,232,154,.15)!important}
+
+/* ════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════ */
+footer{
+  border-top:1px solid var(--brd);
+  padding:3rem 2rem;
+  background:var(--bg2);
+  text-align:center;
+}
+footer p{font-size:.78rem;color:var(--muted);margin-bottom:.35rem}
+footer a{color:var(--blue);transition:color .2s}
+footer a:hover{color:var(--blue2)}
+.footer-links{display:flex;justify-content:center;gap:1.5rem;margin:1rem 0;flex-wrap:wrap}
+.footer-links a{
+  font-size:.8rem;color:var(--muted);padding:.3rem .7rem;
+  border-radius:6px;border:1px solid var(--brd);transition:all .2s;
+}
+.footer-links a:hover{color:var(--blue);border-color:var(--blue)}
+
+/* ════════════════════════════════════════
+   DIVIDER
+════════════════════════════════════════ */
+.sec-div{border:none;border-top:1px solid var(--brd)}
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════ */
+@media(max-width:768px){
+  nav{padding:0 1rem}.nav-center{display:none}
+  .hero{padding:85px 1rem 0}.hero-inner{padding-bottom:3rem}
+  .wrap{padding:0 1rem}
+  .step{grid-template-columns:56px 1fr}
+  .prog-header{grid-template-columns:1fr;gap:1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">DO</div>
+    <span><span class="d">Dev</span><span class="o">Ops</span></span>
+    <span class="yr">2026</span>
+  </div>
+  <ul class="nav-center">
+    <li><a href="#plan">📅 2 месяца</a></li>
+    <li><a href="#roadmap">🗺 Роадмап</a></li>
+    <li><a href="#tools">🛠 Стек</a></li>
+    <li><a href="#skills">💪 Навыки</a></li>
+    <li><a href="#books">📚 Книги</a></li>
+    <li><a href="#checklist">✅ Прогресс</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="week-badge" id="navWeek">📅 Неделя 1</div>
+    <a class="gh-link" href="[github.com](https://github.com/milanm/DevOps-Roadmap)" target="_blank">⭐ 30k</a>
+  </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero" id="hero">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">
+      <div class="dot"></div>
+      Strong Junior DevOps за 8 недель · Источник: milanm/DevOps-Roadmap
+    </div>
+    <h1>
+      Стань<br>
+      <span class="line2">DevOps-инженером</span><br>
+      <span class="line3">за 2 месяца</span>
+    </h1>
+    <p class="hero-sub">
+      Структурированный 8-недельный план с одним лучшим ресурсом на каждую тему.
+      От нуля до Strong Junior/Middle — без хаоса и лишних ссылок.
+    </p>
+    <div class="hero-btns">
+      <a href="#plan" class="btn btn-primary">📅 Смотреть план</a>
+      <a href="#roadmap" class="btn btn-green">🗺 Начать роадмап</a>
+      <a href="#checklist" class="btn btn-ghost">✅ Мой прогресс</a>
+    </div>
+    <div class="hero-pills">
+      <div class="hpill">
+        <span class="hpill-val" style="color:var(--blue)">8</span>
+        <div>
+          <div class="hpill-lbl">недель</div>
+        </div>
+      </div>
+      <div class="hpill">
+        <span class="hpill-val" style="color:var(--green)">2–4ч</span>
+        <div>
+          <div class="hpill-lbl">в день</div>
+        </div>
+      </div>
+      <div class="hpill">
+        <span class="hpill-val" style="color:var(--purple)">12</span>
+        <div>
+          <div class="hpill-lbl">тем</div>
+        </div>
+      </div>
+      <div class="hpill">
+        <span class="hpill-val" style="color:var(--orange)">40+</span>
+        <div>
+          <div class="hpill-lbl">ресурсов</div>
+        </div>
+      </div>
+      <div class="hpill">
+        <span class="hpill-val" style="color:var(--yellow)">30k</span>
+        <div>
+          <div class="hpill-lbl">⭐ GitHub</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 2-MONTH PLAN ═══════════════ -->
+<section class="timeline-section" id="plan">
+  <div class="wrap">
+    <div class="sec-header">
+      <div class="sec-pre" style="color:var(--blue)">
+        <div class="line" style="background:var(--blue)"></div>
+        01 — ПЛАН ОБУЧЕНИЯ
+      </div>
+      <div class="sec-title">8 недель до Strong Junior</div>
+      <p class="sec-desc">Каждая неделя — конкретные темы, задачи и цель. 2–4 часа в день, практика каждый день.</p>
+    </div>
+
+    <div class="month-label">
+      <span style="color:var(--blue)">📘 Месяц 1 — Фундамент</span>
+      <div class="month-line"></div>
+    </div>
+    <div class="weeks-grid" id="month1Grid"></div>
+
+    <div class="month-label" style="margin-top:2.5rem">
+      <span style="color:var(--green)">📗 Месяц 2 — Продвинутый уровень</span>
+      <div class="month-line"></div>
+    </div>
+    <div class="weeks-grid" id="month2Grid"></div>
+  </div>
+</section>
+
+<!-- ═══════════════ ROADMAP ═══════════════ -->
+<section class="roadmap-section" id="roadmap">
+  <div class="wrap">
+    <div class="sec-header">
+      <div class="sec-pre" style="color:var(--green)">
+        <div class="line" style="background:var(--green)"></div>
+        02 — РОАДМАП
+      </div>
+      <div class="sec-title">12 шагов DevOps-инженера</div>
+      <p class="sec-desc">⭐ = лучший ресурс для старта. Дополнительные спрятаны под кнопку — открывай по мере изучения.</p>
+    </div>
+    <div class="steps" id="stepsEl"></div>
+  </div>
+</section>
+
+<hr class="sec-div">
+
+<!-- ═══════════════ TOOLS ═══════════════ -->
+<section class="tools-section" id="tools">
+  <div class="wrap">
+    <div class="sec-header">
+      <div class="sec-pre" style="color:var(--teal)">
+        <div class="line" style="background:var(--teal)"></div>
+        03 — СТЕК ИНСТРУМЕНТОВ
+      </div>
+      <div class="sec-title">Полный DevOps-стек</div>
+      <p class="sec-desc"><span style="color:var(--blue)">★ Синий</span> — рекомендуемый инструмент для старта в каждой категории.</p>
+    </div>
+    <div class="tgrid" id="toolsEl"></div>
+  </div>
+</section>
+
+<hr class="sec-div">
+
+<!-- ═══════════════ SKILLS MATRIX ═══════════════ -->
+<section class="skills-section" id="skills">
+  <div class="wrap">
+    <div class="sec-header">
+      <div class="sec-pre" style="color:var(--purple)">
+        <div class="line" style="background:var(--purple)"></div>
+        04 — МАТРИЦА НАВЫКОВ
+      </div>
+      <div class="sec-title">Что нужно знать на Junior/Middle</div>
+      <p class="sec-desc">Целевые уровни владения инструментами после 2 месяцев обучения.</p>
+    </div>
+    <div class="skills-grid" id="skillsEl"></div>
+  </div>
+</section>
+
+<hr class="sec-div">
+
+<!-- ═══════════════ BOOKS ═══════════════ -->
+<section class="books-section" id="books">
+  <div class="wrap">
+    <div class="sec-header">
+      <div class="sec-pre" style="color:var(--purple)">
+        <div class="line" style="background:var(--purple)"></div>
+        05 — КНИГИ
+      </div>
+      <div class="sec-title">Must-read для DevOps</div>
+      <p class="sec-desc">5 книг, которые формируют DevOps-мышление. Читай параллельно с практикой.</p>
+    </div>
+    <div class="bgrid" id="booksEl"></div>
+  </div>
+</section>
+
+<hr class="sec-div">
+
+<!-- ═══════════════ CHECKLIST ═══════════════ -->
+<section class="progress-section" id="checklist">
+  <div class="wrap">
+    <div class="sec-header">
+      <div class="sec-pre" style="color:var(--orange)">
+        <div class="line" style="background:var(--orange)"></div>
+        06 — МОЙ ПРОГРЕСС
+      </div>
+      <div class="sec-title">Чеклист Strong Junior</div>
+      <p class="sec-desc">Отмечай пройденные темы — сохраняется в браузере. Цель: 100% за 8 недель.</p>
+    </div>
+
+    <div class="prog-header">
+      <div class="prog-meta">
+        <h3>Прогресс обучения</h3>
+        <p id="progTxt">0 из 32 задач выполнено</p>
+      </div>
+      <div class="prog-bar-block">
+        <div class="bar-track"><div class="bar-fill" id="barFill" style="width:0%"></div></div>
+        <div class="bar-lbl" id="barLbl">Начни отмечать выполненные задачи 🚀</div>
+      </div>
+      <div class="prog-pct" id="progPct">0%</div>
+    </div>
+
+    <div id="checklistEl"></div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <p style="font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:.5rem">DevOps Roadmap 2026</p>
+  <p>Основано на <a href="[github.com](https://github.com/milanm/DevOps-Roadmap)" target="_blank">milanm/DevOps-Roadmap</a> — 30k ⭐ на GitHub</p>
+  <div class="footer-links">
+    <a href="[github.com](https://github.com/milanm/DevOps-Roadmap)" target="_blank">⭐ GitHub Repo</a>
+    <a href="[linkedin.com](https://www.linkedin.com/in/milan-milanovic/)" target="_blank">💼 LinkedIn</a>
+    <a href="[medium.com](https://medium.com/@milanm)" target="_blank">✍️ Medium</a>
+    <a href="#plan">📅 К плану</a>
+    <a href="#roadmap">🗺 К роадмапу</a>
+  </div>
+  <p>Автор оригинала: <a href="[linkedin.com](https://www.linkedin.com/in/milan-milanovic/)" target="_blank">Milan Milanović</a></p>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════
+     JAVASCRIPT DATA & RENDERING
+═══════════════════════════════════════════════════════ -->
+<script>
+/* ══════════════════════════════
+   DATA: 8-WEEK PLAN
+══════════════════════════════ */
+const weeks = [
+  {
+    month:1, n:1,
+    icon:'🐧', color:'blue', grad:'linear-gradient(90deg,#3d9bff,#5ab0ff)',
+    title:'Linux, Git & Bash',
+    desc:'Основа всего. Без командной строки и Git дальше двигаться невозможно.',
+    topics:[
+      'Linux: файловая система, права, процессы',
+      'Bash: скрипты, условия, циклы, cron',
+      'SSH: ключи, tunnel, config',
+      'Git: clone, branch, merge, rebase, PR',
+    ],
+    goal:'Напиши bash-скрипт автоматизации + сделай первый pull request на GitHub'
+  },
+  {
+    month:1, n:2,
+    icon:'🐍', color:'green', grad:'linear-gradient(90deg,#2de89a,#4dfaaa)',
+    title:'Python & Сети',
+    desc:'Язык автоматизации + сетевые знания для работы с инфраструктурой.',
+    topics:[
+      'Python: синтаксис, функции, файлы, requests',
+      'Python: boto3 / paramiko для DevOps',
+      'Сети: TCP/IP, DNS, HTTP/S, SSL/TLS',
+      'Сети: Firewall, proxy, load balancer',
+    ],
+    goal:'Напиши Python-скрипт, который читает логи и отправляет алерт'
+  },
+  {
+    month:1, n:3,
+    icon:'🐳', color:'purple', grad:'linear-gradient(90deg,#a67cff,#bf9fff)',
+    title:'Docker & Контейнеры',
+    desc:'Контейнеры — стандарт упаковки приложений. Без Docker никуда.',
+    topics:[
+      'Docker: образы, контейнеры, слои',
+      'Dockerfile: multi-stage build, оптимизация',
+      'docker-compose: многосервисные приложения',
+      'Docker Hub: push/pull, приватный реестр',
+    ],
+    goal:'Упакуй своё приложение в Docker + подними стек из 3 сервисов через compose'
+  },
+  {
+    month:1, n:4,
+    icon:'☁️', color:'teal', grad:'linear-gradient(90deg,#18dce8,#40eaf5)',
+    title:'Облако AWS + Серверы',
+    desc:'AWS — самый востребованный облачный провайдер. Начни с основ.',
+    topics:[
+      'AWS: EC2, S3, VPC, IAM, RDS',
+      'AWS CLI: автоматизация через командную строку',
+      'Nginx: настройка веб-сервера, reverse proxy',
+      'Linux-сервер: systemd, логи, мониторинг процессов',
+    ],
+    goal:'Подними EC2-инстанс, настрой Nginx, задеплой Docker-контейнер'
+  },
+  {
+    month:2, n:5,
+    icon:'⚙️', color:'orange', grad:'linear-gradient(90deg,#ff8c42,#ffaa6a)',
+    title:'CI/CD — GitHub Actions',
+    desc:'Пайплайны — сердце DevOps. Автоматизируй сборку, тесты и деплой.',
+    topics:[
+      'GitHub Actions: triggers, jobs, steps',
+      'CI: lint, unit tests, build Docker image',
+      'CD: push в Docker Hub, деплой на сервер',
+      'Secrets & environments: безопасные переменные',
+    ],
+    goal:'Полный пайплайн: push → тесты → build image → деплой на EC2'
+  },
+  {
+    month:2, n:6,
+    icon:'🔧', color:'red', grad:'linear-gradient(90deg,#ff5c72,#ff7a8a)',
+    title:'IaC — Terraform & Ansible',
+    desc:'Инфраструктура как код. Опиши серверы кодом, управляй через Git.',
+    topics:[
+      'Terraform: providers, resources, state, modules',
+      'Terraform: поднять EC2 + VPC + S3 кодом',
+      'Ansible: inventory, playbooks, roles, vars',
+      'Ansible: автоматизация настройки серверов',
+    ],
+    goal:'Terraform поднимает инфраструктуру, Ansible её настраивает — всё из одного репо'
+  },
+  {
+    month:2, n:7,
+    icon:'☸️', color:'cyan', grad:'linear-gradient(90deg,#22d3ee,#5eead4)',
+    title:'Kubernetes',
+    desc:'Оркестрация контейнеров — обязательный навык для Middle DevOps.',
+    topics:[
+      'K8s: Pod, Deployment, Service, Ingress',
+      'K8s: ConfigMap, Secret, Namespace, RBAC',
+      'Helm: чарты, values, templating, upgrade',
+      'K8s на AWS: EKS или kind/minikube локально',
+    ],
+    goal:'Задеплой приложение в K8s с Helm, настрой Ingress и rolling update'
+  },
+  {
+    month:2, n:8,
+    icon:'📊', color:'pink', grad:'linear-gradient(90deg,#f06fba,#f590cc)',
+    title:'Мониторинг, GitOps & Security',
+    desc:'Финальный этап: видеть систему, автоматизировать деплой через Git, защитить секреты.',
+    topics:[
+      'Prometheus + Grafana: метрики, дашборды',
+      'Loki + Alertmanager: логи и алерты',
+      'Argo CD: GitOps-деплой в Kubernetes',
+      'Vault + SonarQube: секреты и code security',
+    ],
+    goal:'Полный стек: код в Git → CI/CD → K8s через Argo CD → мониторинг в Grafana'
+  },
+];
+
+/* ══════════════════════════════
+   DATA: ROADMAP STEPS
+══════════════════════════════ */
+const steps = [
+  {
+    n:1, col:'blue',
+    title:'Git & Контроль версий',
+    diff:'Легко', diffCls:'sl-must',
+    topic:'Основа — все файлы кода и инфраструктуры живут в Git',
+    desc:'Первый шаг. Команды clone, branch, merge, rebase, pull request. GitFlow и trunk-based development.',
+    tags:['git','GitHub','GitLab','Bitbucket'],
+    best:{ title:'Git Tutorial for Beginners: Learn Git in 1 Hour', url:'[youtube.com](https://www.youtube.com/watch?v=8JJ101D3knE)', type:'v' },
+    more:[
+      { title:'Git and GitHub for Beginners – Crash Course (freeCodeCamp)', url:'[youtube.com](https://www.youtube.com/watch?v=RGOj5yH7evk)', type:'v' },
+      { title:'Pro Git — полная бесплатная книга', url:'[git-scm.com](https://git-scm.com/book/en/v2)', type:'b' },
+      { title:'Gitflow Workflow (Atlassian)', url:'[atlassian.com](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)', type:'d' },
+    ]
+  },
+  {
+    n:2, col:'green',
+    title:'Python / Go — язык автоматизации',
+    diff:'Средне', diffCls:'sl-good',
+    topic:'Скрипты, утилиты, автоматизация — нужен хотя бы один язык',
+    desc:'Python — лучший выбор для старта: boto3 для AWS, paramiko для SSH, requests для API. Go — для высокопроизводительных утилит.',
+    tags:['Python','Go','Ruby'],
+    best:{ title:'Python Tutorial: Full Course for Beginners (freeCodeCamp, 6ч)', url:'[youtube.com](https://www.youtube.com/watch?v=_uQrJ0TkZlc)', type:'v' },
+    more:[
+      { title:'Go Programming – Golang Course with Bonus Projects', url:'[youtube.com](https://www.youtube.com/watch?v=un6ZyFkqFKo)', type:'v' },
+      { title:'Go by Example — интерактивная документация', url:'[gobyexample.com](https://gobyexample.com/)', type:'d' },
+    ]
+  },
+  {
+    n:3, col:'teal',
+    title:'Linux & Bash-скрипты',
+    diff:'Важно', diffCls:'sl-must',
+    topic:'Все облачные серверы работают на Linux',
+    desc:'Файловая система, права, процессы, systemd, cron, bash-скрипты — ежедневный инструментарий DevOps.',
+    tags:['Ubuntu','bash','systemd','cron','SSH'],
+    best:{ title:'Introduction to Linux – Full Course for Beginners (freeCodeCamp)', url:'[youtube.com](https://www.youtube.com/watch?v=sWbUDq4S6Y8)', type:'v' },
+    more:[
+      { title:'Bash Scripting Tutorial for Beginners', url:'[youtube.com](https://www.youtube.com/watch?v=tK9Oc6AEnR4)', type:'v' },
+      { title:'Linux Journey — интерактивный тренажёр', url:'[linuxjourney.com](https://linuxjourney.com/)', type:'d' },
+      { title:'The Linux Command Line (бесплатная книга)', url:'[linuxcommand.org](http://linuxcommand.org/tlcl.php)', type:'b' },
+    ]
+  },
+  {
+    n:4, col:'orange',
+    title:'Сети & Безопасность',
+    diff:'Средне', diffCls:'sl-good',
+    topic:'TCP/IP, DNS, HTTP(S), SSL, SSH, Firewall',
+    desc:'Без понимания сетей невозможно настроить балансировщики, SSL-терминацию, VPC, security groups.',
+    tags:['TCP/IP','DNS','HTTP/S','SSL','SSH','Firewall'],
+    best:{ title:'Computer Networking Course – Network Engineering (freeCodeCamp)', url:'[youtube.com](https://www.youtube.com/watch?v=qiQR5rTSshw)', type:'v' },
+    more:[
+      { title:'Networking Tutorial — практический плейлист', url:'[youtube.com](https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5)', type:'v' },
+    ]
+  },
+  {
+    n:5, col:'yellow',
+    title:'Управление серверами',
+    diff:'Средне', diffCls:'sl-good',
+    topic:'Nginx, Apache, OS administration',
+    desc:'Настройка web-серверов, reverse proxy, управление сервисами, настройка логирования.',
+    tags:['Nginx','Apache','Systemd','Logging'],
+    best:{ title:'Linux Server Course – System Configuration and Operation', url:'[youtube.com](https://www.youtube.com/watch?v=WMy3OzvBWc0)', type:'v' },
+    more:[
+      { title:'The Ultimate Guide to Server Management (Linode)', url:'[linode.com](https://www.linode.com/content/server-management-guide/)', type:'d' },
+    ]
+  },
+  {
+    n:6, col:'purple',
+    title:'Docker & Контейнеры',
+    diff:'Важно', diffCls:'sl-must',
+    topic:'Стандарт упаковки приложений — без этого никуда',
+    desc:'Образы, контейнеры, Dockerfile, multi-stage build, docker-compose, реестры. Обязательно на каждом собеседовании.',
+    tags:['Docker','Dockerfile','docker-compose','Podman'],
+    best:{ title:'Docker – Full Course for Beginners (TechWorld with Nana, 3ч)', url:'[youtube.com](https://www.youtube.com/watch?v=3c-iBn73dDE)', type:'v' },
+    more:[
+      { title:'Docker Tutorial for Beginners (сжато, 1ч)', url:'[youtube.com](https://www.youtube.com/watch?v=pTFZFxd5hgI)', type:'v' },
+      { title:'Docker Official Documentation', url:'[docs.docker.com](https://docs.docker.com/)', type:'d' },
+    ]
+  },
+  {
+    n:7, col:'cyan',
+    title:'Kubernetes',
+    diff:'Сложно', diffCls:'sl-bonus',
+    topic:'Оркестрация контейнеров — стандарт в продакшне',
+    desc:'Pod, Deployment, Service, Ingress, ConfigMap, Secret, Helm. Самый важный навык для Middle DevOps.',
+    tags:['Kubernetes','Helm','kubectl','Ingress','RBAC'],
+    best:{ title:'Kubernetes Tutorial for Beginners (TechWorld with Nana, 4ч)', url:'[youtube.com](https://www.youtube.com/watch?v=X48VuDVv0do)', type:'v' },
+    more:[
+      { title:'Kubernetes Official Documentation', url:'[kubernetes.io](https://kubernetes.io/docs/home/)', type:'d' },
+    ]
+  },
+  {
+    n:8, col:'red',
+    title:'Infrastructure as Code',
+    diff:'Важно', diffCls:'sl-must',
+    topic:'Terraform + Ansible — инфраструктура и конфигурация кодом',
+    desc:'Terraform описывает облачную инфраструктуру, Ansible автоматизирует настройку серверов. Оба нужны.',
+    tags:['Terraform','Ansible','Pulumi','CloudFormation'],
+    best:{ title:'Terraform Tutorial for Beginners (TechWorld with Nana)', url:'[youtube.com](https://www.youtube.com/watch?v=7xngnjfIlK4)', type:'v' },
+    more:[
+      { title:'Ansible Full Course', url:'[youtube.com](https://www.youtube.com/watch?v=EcnqJbxBcM0)', type:'v' },
+      { title:'Terraform Documentation (HashiCorp)', url:'[developer.hashicorp.com](https://developer.hashicorp.com/terraform/docs)', type:'d' },
+      { title:'Ansible Documentation', url:'[docs.ansible.com](https://docs.ansible.com/)', type:'d' },
+      { title:'Pulumi – IaC на любом языке', url:'[pulumi.com](https://www.pulumi.com/)', type:'d' },
+    ]
+  },
+  {
+    n:9, col:'green',
+    title:'CI/CD',
+    diff:'Важно', diffCls:'sl-must',
+    topic:'Автоматизация сборки, тестов и деплоя',
+    desc:'GitHub Actions — лучший старт. Потом GitLab CI для enterprise, Jenkins для legacy. Понимать пайплайны обязательно.',
+    tags:['GitHub Actions','GitLab CI','Jenkins','CircleCI'],
+    best:{ title:'GitHub Actions Tutorial (TechWorld with Nana)', url:'[youtube.com](https://www.youtube.com/watch?v=R8_veQiYBjI)', type:'v' },
+    more:[
+      { title:'DevOps CI/CD Explained in 100 Seconds (Fireship)', url:'[youtube.com](https://www.youtube.com/watch?v=scEDHsr3APg)', type:'v' },
+      { title:'GitLab CI/CD Tutorial', url:'[youtube.com](https://www.youtube.com/watch?v=qP8kir2GUgo)', type:'v' },
+      { title:'Complete Jenkins Tutorial', url:'[youtube.com](https://www.youtube.com/watch?v=FX322RVNGj4)', type:'v' },
+    ]
+  },
+  {
+    n:10, col:'blue',
+    title:'Мониторинг & Observability',
+    diff:'Средне', diffCls:'sl-good',
+    topic:'Prometheus + Grafana — видеть что происходит в продакшне',
+    desc:'Метрики, логи, трейсы, алерты, дашборды. Ты должен знать о проблеме раньше, чем узнает пользователь.',
+    tags:['Prometheus','Grafana','Loki','Alertmanager','Datadog'],
+    best:{ title:'How Prometheus Monitoring works (TechWorld with Nana)', url:'[youtube.com](https://www.youtube.com/watch?v=h4Sl21AKiDg)', type:'v' },
+    more:[
+      { title:'Grafana Tutorial for Beginners', url:'[youtube.com](https://www.youtube.com/watch?v=EGgtJUjky8w)', type:'v' },
+      { title:'Prometheus Official Documentation', url:'[prometheus.io](https://prometheus.io/docs/introduction/overview/)', type:'d' },
+    ]
+  },
+  {
+    n:11, col:'orange',
+    title:'Облачный провайдер — AWS',
+    diff:'Важно', diffCls:'sl-must',
+    topic:'AWS — самый востребованный, с него и начни',
+    desc:'EC2, S3, VPC, IAM, RDS, EKS, CloudWatch. Освой один — остальные по аналогии за несколько дней.',
+    tags:['AWS','GCP','Azure'],
+    best:{ title:'AWS Certified Cloud Practitioner – Full Course (freeCodeCamp)', url:'[youtube.com](https://www.youtube.com/watch?v=SOTamWNgDKc)', type:'v' },
+    more:[
+      { title:'Google Cloud Associate Cloud Engineer Course', url:'[youtube.com](https://www.youtube.com/watch?v=jpno8FSqpc8)', type:'v' },
+      { title:'AZ-900: Microsoft Azure Fundamentals', url:'[youtube.com](https://www.youtube.com/watch?v=NKEFWyqJ5XA)', type:'v' },
+    ]
+  },
+  {
+    n:12, col:'pink',
+    title:'GitOps, DevSecOps & Практики',
+    diff:'Бонус', diffCls:'sl-bonus',
+    topic:'Argo CD, Vault, SonarQube + Agile/Scrum',
+    desc:'Финальный уровень: GitOps через Argo CD, безопасность через Vault и Trivy, инженерные практики команды.',
+    tags:['Argo CD','Flux CD','Vault','SonarQube','Trivy','Scrum'],
+    best:{ title:'ArgoCD Tutorial for Beginners (TechWorld with Nana)', url:'[youtube.com](https://www.youtube.com/watch?v=MeU5_k9ssrs)', type:'v' },
+    more:[
+      { title:'HashiCorp Vault Tutorial', url:'[youtube.com](https://www.youtube.com/watch?v=Ci1Eu5SrLfU)', type:'v' },
+      { title:'DevSecOps Tutorial for Beginners', url:'[youtube.com](https://www.youtube.com/watch?v=bCMGWDZOqes)', type:'v' },
+      { title:'FluxCD Tutorial', url:'[youtube.com](https://www.youtube.com/watch?v=X5W_706-jSY)', type:'v' },
+      { title:'Scrum in 10 minutes', url:'[youtube.com](https://www.youtube.com/watch?v=XU0llRltyFM)', type:'v' },
+    ]
+  },
+];
+
+/* ══════════════════════════════
+   DATA: TOOLS
+══════════════════════════════ */
+const tools = [
+  { cat:'Контроль версий', rec:'Git',          all:['Git','GitHub','GitLab','Bitbucket'] },
+  { cat:'Язык',            rec:'Python',        all:['Python','Go','Ruby'] },
+  { cat:'OS & Linux',      rec:'Ubuntu',        all:['Ubuntu','CentOS','RHEL'] },
+  { cat:'Контейнеры',      rec:'Docker',        all:['Docker','Podman'] },
+  { cat:'Оркестрация',     rec:'Kubernetes',    all:['Kubernetes','OpenShift'] },
+  { cat:'IaC Provision',   rec:'Terraform',     all:['Terraform','Pulumi','CloudFormation'] },
+  { cat:'Config Mgmt',     rec:'Ansible',       all:['Ansible','Chef','Puppet'] },
+  { cat:'CI/CD',           rec:'GitHub Actions',all:['GitHub Actions','GitLab CI','Jenkins','CircleCI'] },
+  { cat:'Облако',          rec:'AWS',           all:['AWS','GCP','Azure','DigitalOcean'] },
+  { cat:'Мониторинг',      rec:'Prometheus',    all:['Prometheus','Grafana','Loki','Datadog'] },
+  { cat:'Artifact Mgmt',   rec:'Nexus',         all:['Nexus','JFrog','ECR'] },
+  { cat:'Service Mesh',    rec:'Istio',         all:['Istio','Consul','Linkerd'] },
+  { cat:'GitOps',          rec:'Argo CD',       all:['Argo CD','Flux CD'] },
+  { cat:'DevSecOps',       rec:'Vault',         all:['SonarQube','Vault','Trivy'] },
+];
+
+/* ══════════════════════════════
+   DATA: SKILLS MATRIX
+══════════════════════════════ */
+const skills = [
+  {
+    name:'Linux & Bash', level:'Must', cls:'sl-must',
+    bars:[
+      { lbl:'Командная строка', pct:90, color:'#3d9bff' },
+      { lbl:'Bash-скрипты',     pct:75, color:'#3d9bff' },
+      { lbl:'Systemd / cron',   pct:70, color:'#3d9bff' },
+    ]
+  },
+  {
+    name:'Git', level:'Must', cls:'sl-must',
+    bars:[
+      { lbl:'Базовые команды', pct:95, color:'#2de89a' },
+      { lbl:'Ветки / merge',   pct:85, color:'#2de89a' },
+      { lbl:'GitFlow',         pct:70, color:'#2de89a' },
+    ]
+  },
+  {
+    name:'Docker', level:'Must', cls:'sl-must',
+    bars:[
+      { lbl:'Dockerfile',        pct:90, color:'#a67cff' },
+      { lbl:'docker-compose',    pct:85, color:'#a67cff' },
+      { lbl:'Реестры / hub',     pct:75, color:'#a67cff' },
+    ]
+  },
+  {
+    name:'CI/CD', level:'Must', cls:'sl-must',
+    bars:[
+      { lbl:'GitHub Actions', pct:85, color:'#ff8c42' },
+      { lbl:'GitLab CI',      pct:70, color:'#ff8c42' },
+      { lbl:'Jenkins',        pct:50, color:'#ff8c42' },
+    ]
+  },
+  {
+    name:'Kubernetes', level:'Good', cls:'sl-good',
+    bars:[
+      { lbl:'Pod / Deploy / Svc', pct:80, color:'#18dce8' },
+      { lbl:'Helm-чарты',         pct:70, color:'#18dce8' },
+      { lbl:'Ingress / RBAC',     pct:65, color:'#18dce8' },
+    ]
+  },
+  {
+    name:'Terraform + Ansible', level:'Must', cls:'sl-must',
+    bars:[
+      { lbl:'Terraform modules',  pct:75, color:'#ff5c72' },
+      { lbl:'Ansible playbooks',  pct:80, color:'#ff5c72' },
+      { lbl:'State management',   pct:60, color:'#ff5c72' },
+    ]
+  },
+  {
+    name:'AWS', level:'Must', cls:'sl-must',
+    bars:[
+      { lbl:'EC2 / S3 / VPC', pct:80, color:'#ffd84d' },
+      { lbl:'IAM / Security', pct:70, color:'#ffd84d' },
+      { lbl:'EKS / RDS',      pct:55, color:'#ffd84d' },
+    ]
+  },
+  {
+    name:'Prometheus + Grafana', level:'Good', cls:'sl-good',
+    bars:[
+      { lbl:'Prometheus metrics', pct:75, color:'#f06fba' },
+      { lbl:'Grafana dashboards', pct:80, color:'#f06fba' },
+      { lbl:'Alertmanager',       pct:65, color:'#f06fba' },
+    ]
+  },
+  {
+    name:'GitOps / Argo CD', level:'Bonus', cls:'sl-bonus',
+    bars:[
+      { lbl:'Argo CD deploy',  pct:65, color:'#a67cff' },
+      { lbl:'Sync policies',   pct:55, color:'#a67cff' },
+      { lbl:'Flux CD',         pct:40, color:'#a67cff' },
+    ]
+  },
+];
+
+/* ══════════════════════════════
+   DATA: BOOKS
+══════════════════════════════ */
+const books = [
+  { icon:'📗', title:'The DevOps Handbook',  sub:'Библия DevOps-культуры, CALMS, метрики', url:'[amazon.com](https://www.amazon.com/DevOps-Handbook-World-Class-Reliability-Organizations/dp/1950508404)', glow:'rgba(45,232,154,.06)' },
+  { icon:'📕', title:'The Phoenix Project',  sub:'Роман о трансформации IT — читается за 2 дня', url:'[amazon.com](https://www.amazon.com/Phoenix-Project-DevOps-Helping-Business/dp/0988262592)', glow:'rgba(255,92,114,.06)' },
+  { icon:'📘', title:'Continuous Delivery',  sub:'Классика пайплайнов и автоматизации доставки', url:'[continuousdelivery.com](https://continuousdelivery.com/)', glow:'rgba(61,155,255,.06)' },
+  { icon:'📙', title:'Team Topologies',      sub:'Как организовать команды вокруг потоков ценности', url:'[teamtopologies.com](https://teamtopologies.com/book)', glow:'rgba(255,140,66,.06)' },
+  { icon:'📒', title:'Accelerate',           sub:'Данные о том, что реально ускоряет доставку', url:'[amazon.com](https://www.amazon.com/Accelerate-Software-Performing-Technology-Organizations/dp/1942788339)', glow:'rgba(255,216,77,.06)' },
+];
+
+/* ══════════════════════════════
+   DATA: CHECKLIST
+══════════════════════════════ */
+const checkData = [
+  { cat:'Неделя 1 — Linux & Git', color:'blue', items:[
+    'Git: выучил clone, add, commit, push, pull',
+    'Git: разобрался с ветками, merge и rebase',
+    'Git: сделал pull request на GitHub',
+    'Linux: освоил навигацию, права доступа, процессы',
+    'Bash: написал скрипт с условиями и циклами',
+    'SSH: настроил ключи, подключился к серверу',
+  ]},
+  { cat:'Неделя 2 — Python & Сети', color:'green', items:[
+    'Python: написал скрипт автоматизации',
+    'Python: разобрался с boto3 или paramiko',
+    'Сети: понял TCP/IP, DNS, HTTP/S',
+    'Сети: разобрался с SSL/TLS и firewall',
+  ]},
+  { cat:'Неделя 3 — Docker', color:'purple', items:[
+    'Docker: собрал образ через Dockerfile',
+    'Docker: запустил multi-stage build',
+    'Docker: поднял стек через docker-compose',
+    'Docker: запушил образ в Docker Hub',
+  ]},
+  { cat:'Неделя 4 — AWS & Серверы', color:'teal', items:[
+    'AWS: запустил EC2-инстанс',
+    'AWS: настроил S3 bucket и IAM-роль',
+    'Nginx: настроил reverse proxy',
+    'Сервер: задеплоил Docker-контейнер на EC2',
+  ]},
+  { cat:'Неделя 5 — CI/CD', color:'orange', items:[
+    'GitHub Actions: написал первый пайплайн',
+    'CI: добавил lint и автотесты',
+    'CD: автодеплой на сервер при push в main',
+    'Secrets: безопасно храню токены и пароли',
+  ]},
+  { cat:'Неделя 6 — IaC', color:'red', items:[
+    'Terraform: поднял EC2 + VPC кодом',
+    'Terraform: разобрался с state и modules',
+    'Ansible: написал playbook для настройки сервера',
+    'IaC: вся инфраструктура версионирована в Git',
+  ]},
+  { cat:'Неделя 7 — Kubernetes', color:'cyan', items:[
+    'K8s: задеплоил приложение через kubectl',
+    'K8s: написал Helm-чарт',
+    'K8s: настроил Ingress и rolling update',
+    'K8s: разобрался с RBAC и Namespace',
+  ]},
+  { cat:'Неделя 8 — Мониторинг & GitOps', color:'pink', items:[
+    'Prometheus: настроил сбор метрик',
+    'Grafana: создал дашборд для приложения',
+    'Alertmanager: настроил алерты в Telegram/Slack',
+    'Argo CD: настроил GitOps-деплой в Kubernetes',
+  ]},
+];
+
+/* ══════════════════════════════
+   COLOR MAPS
+══════════════════════════════ */
+const C = {
+  blue:  { text:'var(--blue)',   bg:'var(--gb)',  brd:'rgba(61,155,255,.35)',   grad:'linear-gradient(135deg,#3d9bff,#1a6fcc)' },
+  green: { text:'var(--green)',  bg:'var(--gg)',  brd:'rgba(45,232,154,.35)',   grad:'linear-gradient(135deg,#2de89a,#0fad6a)' },
+  purple:{ text:'var(--purple)',bg:'var(--gp)',  brd:'rgba(166,124,255,.35)',  grad:'linear-gradient(135deg,#a67cff,#7044cc)' },
+  orange:{ text:'var(--orange)',bg:'var(--go)',  brd:'rgba(255,140,66,.35)',   grad:'linear-gradient(135deg,#ff8c42,#cc5f14)' },
+  red:   { text:'var(--red)',    bg:'var(--gr)',  brd:'rgba(255,92,114,.35)',   grad:'linear-gradient(135deg,#ff5c72,#cc2a44)' },
+  teal:  { text:'var(--teal)',   bg:'var(--gt)',  brd:'rgba(24,220,232,.35)',   grad:'linear-gradient(135deg,#18dce8,#0aa0aa)' },
+  yellow:{ text:'var(--yellow)',bg:'var(--gy)',  brd:'rgba(255,216,77,.35)',   grad:'linear-gradient(135deg,#ffd84d,#cc9e00)' },
+  pink:  { text:'var(--pink)',   bg:'var(--gpk)', brd:'rgba(240,111,186,.35)', grad:'linear-gradient(135deg,#f06fba,#b82e82)' },
+  cyan:  { text:'var(--cyan)',   bg:'rgba(34,211,238,.1)', brd:'rgba(34,211,238,.35)', grad:'linear-gradient(135deg,#22d3ee,#0a9cb8)' },
+};
+
+const typeMap  = { v:'rv', d:'rd', c:'rc', b:'rb' };
+const typeName = { v:'▶ Видео', d:'📖 Доки', c:'🎓 Курс', b:'📚 Книга' };
+
+/* ══════════════════════════════
+   RENDER: WEEKS
+══════════════════════════════ */
+function renderWeeks(){
+  [1,2].forEach(m=>{
+    const el = document.getElementById('month'+m+'Grid');
+    el.innerHTML = weeks.filter(w=>w.month===m).map(w=>{
+      const c = C[w.color];
+      return `
+      <div class="week-card" style="--accent-grad:${w.grad}">
+        <div class="week-head">
+          <div>
+            <div class="week-num">Неделя ${w.n}</div>
+            <div class="week-title" style="color:${c.text}">${w.title}</div>
+          </div>
+          <div class="week-icon">${w.icon}</div>
+        </div>
+        <p class="week-desc">${w.desc}</p>
+        <div class="week-topics">
+          ${w.topics.map(t=>`
+          <div class="wtopic">
+            <div class="wtopic-dot" style="background:${c.text}"></div>
+            <span style="font-size:.78rem">${t}</span>
+          </div>`).join('')}
+        </div>
+        <div class="week-goal" style="border-color:${c.text}">
+          <strong style="color:${c.text}">🎯 Цель недели</strong>
+          ${w.goal}
+        </div>
+      </div>`;
+    }).join('');
+  });
+}
+
+/* ══════════════════════════════
+   RENDER: STEPS
+══════════════════════════════ */
+function renderSteps(){
+  const c_map = {
+    blue:'blue',green:'green',teal:'teal',orange:'orange',
+    yellow:'yellow',purple:'purple',cyan:'cyan',red:'red',pink:'pink'
+  };
+  document.getElementById('stepsEl').innerHTML = steps.map(s=>{
+    const c = C[s.col] || C.blue;
+    return `
+    <div class="step">
+      <div class="spine">
+        <div class="snum" style="color:${c.text};border-color:${c.brd};background:${c.bg}">
+          <div class="glow" style="background:${c.text}"></div>
+          ${s.n}
+        </div>
+        <div class="sline"></div>
+      </div>
+      <div class="sbody">
+        <div class="step-top">
+          <div>
+            <div class="stitle">${s.title}</div>
+            <div class="stopik">${s.topic}</div>
+          </div>
+          <span class="diff ${s.diffCls}">${s.diff}</span>
+        </div>
+        <p class="sdesc">${s.desc}</p>
+        <div class="tags">
+          ${s.tags.map(t=>`<span class="tag" style="background:${c.bg};color:${c.text};border:1px solid ${c.brd}">${t}</span>`).join('')}
+        </div>
+        <div class="rtable-wrap">
+          <table class="rtable">
+            <tr class="star-row">
+              <td>
+                <span class="star-label">⭐ СТАРТ</span>
+                <a href="${s.best.url}" target="_blank" rel="noopener">${s.best.title}</a>
+              </td>
+              <td><span class="rbadge ${typeMap[s.best.type]||'rd'}">${typeName[s.best.type]||'Ресурс'}</span></td>
+            </tr>
+            ${s.more.map(r=>`
+            <tr class="more-${s.n}" style="display:none">
+              <td><a href="${r.url}" target="_blank" rel="noopener">${r.title}</a></td>
+              <td><span class="rbadge ${typeMap[r.type]||'rd'}">${typeName[r.type]||'Ресурс'}</span></td>
+            </tr>`).join('')}
+          </table>
+        </div>
+        ${s.more.length ? `
+        <button class="more-toggle" onclick="toggleMore(${s.n},this)">
+          + Ещё ${s.more.length} ресурс${s.more.length===1?'':s.more.length<5?'а':'ов'}
+        </button>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleMore(n, btn){
+  const rows = document.querySelectorAll('.more-'+n);
+  const open = rows[0].style.display !== 'none';
+  rows.forEach(r => r.style.display = open ? 'none' : '');
+  const s = steps.find(x => x.n === n);
+  btn.textContent = open
+    ? `+ Ещё ${s.more.length} ресурс${s.more.length===1?'':s.more.length<5?'а':'ов'}`
+    : '− Скрыть дополнительные';
+}
+
+/* ══════════════════════════════
+   RENDER: TOOLS
+══════════════════════════════ */
+function renderTools(){
+  const colors = ['blue','green','teal','orange','purple','red','yellow','pink','cyan','green','blue','orange','purple','red'];
+  document.getElementById('toolsEl').innerHTML = tools.map((t,i)=>{
+    const col = colors[i % colors.length];
+    const c = C[col];
+    return `
+    <div class="tcard" style="--t-accent:${c.text}">
+      <div class="tcat">${t.cat}</div>
+      <div class="tpills">
+        ${t.all.map(p=>`<span class="tpill${p===t.rec?' rec':''}">${p}</span>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ══════════════════════════════
+   RENDER: SKILLS
+══════════════════════════════ */
+function renderSkills(){
+  document.getElementById('skillsEl').innerHTML = skills.map(s=>`
+    <div class="skill-card">
+      <div class="skill-head">
+        <div class="skill-name">${s.name}</div>
+        <span class="skill-level ${s.cls}">${s.level}</span>
+      </div>
+      <div class="skill-bars">
+        ${s.bars.map(b=>`
+        <div class="sbar-row">
+          <div class="sbar-lbl">${b.lbl}</div>
+          <div class="sbar-track">
+            <div class="sbar-fill" style="width:0%;background:${b.color}" data-w="${b.pct}"></div>
+          </div>
+          <span style="font-size:.7rem;color:var(--muted);width:32px;text-align:right">${b.pct}%</span>
+        </div>`).join('')}
+      </div>
+    </div>
+  `).join('');
+
+  // animate bars when visible
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.querySelectorAll('.sbar-fill').forEach(bar=>{
+          setTimeout(()=>bar.style.width = bar.dataset.w+'%', 100);
+        });
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:.3});
+  document.querySelectorAll('.skill-card').forEach(c=>obs.observe(c));
+}
+
+/* ══════════════════════════════
+   RENDER: BOOKS
+══════════════════════════════ */
+function renderBooks(){
+  document.getElementById('booksEl').innerHTML = books.map(b=>`
+    <a class="bcard" href="${b.url}" target="_blank" rel="noopener" style="--b-glow:radial-gradient(circle at 30% 30%,${b.glow},transparent 70%)">
+      <div class="bicon">${b.icon}</div>
+      <div class="btitle">${b.title}</div>
+      <div class="bsub">${b.sub}</div>
+      <div class="bread">Читать →</div>
+    </a>
+  `).join('');
+}
+
+/* ══════════════════════════════
+   RENDER: CHECKLIST
+══════════════════════════════ */
+const SK = 'devops_cl_v4';
+let saved = JSON.parse(localStorage.getItem(SK)||'{}');
+
+function totalItems(){
+  return checkData.reduce((a,c)=>a+c.items.length,0);
+}
+function countDone(){
+  return Object.values(saved).filter(Boolean).length;
+}
+function updateProg(){
+  const total = totalItems(), done = countDone();
+  const pct = Math.round(done/total*100);
+  document.getElementById('barFill').style.width = pct+'%';
+  document.getElementById('progPct').textContent = pct+'%';
+  document.getElementById('progTxt').textContent = `${done} из ${total} задач выполнено`;
+  document.getElementById('barLbl').textContent =
+    pct===0 ? 'Начни с первой задачи 🚀'
+    : pct===100 ? '🎉 Все задачи выполнены! Ты DevOps-инженер!'
+    : `Осталось ${total-done} задач · ${pct}% пути пройдено`;
+}
+
+function renderChecklist(){
+  let globalIdx = 0;
+  const el = document.getElementById('checklistEl');
+  el.innerHTML = checkData.map(cat=>{
+    const c = C[cat.color] || C.blue;
+    const items = cat.items.map((item,_)=>{
+      const i = globalIdx++;
+      const done = !!saved[i];
+      return `
+      <div class="citem${done?' done':''}" id="ci${i}">
+        <input type="checkbox" id="cb${i}" ${done?'checked':''}>
+        <label for="cb${i}">${item}</label>
+      </div>`;
+    }).join('');
+    return `
+    <div class="check-cat">
+      <span class="check-cat-label" style="color:${c.text}">${cat.cat}</span>
+      <div class="check-cat-line"></div>
+    </div>
+    <div class="cgrid">${items}</div>`;
+  }).join('');
+
+  // bind events
+  let idx = 0;
+  checkData.forEach(cat=>{
+    cat.items.forEach((_,__)=>{
+      const i = idx++;
+      const cb = document.getElementById('cb'+i);
+      const wrap = document.getElementById('ci'+i);
+      if(!cb) return;
+      cb.addEventListener('change',()=>{
+        saved[i]=cb.checked;
+        wrap.classList.toggle('done',cb.checked);
+        localStorage.setItem(SK,JSON.stringify(saved));
+        updateProg();
+      });
+      wrap.addEventListener('click',e=>{ if(e.target!==cb) cb.click(); });
+    });
+  });
+  updateProg();
+}
+
+/* ══════════════════════════════
+   CURRENT WEEK INDICATOR
+══════════════════════════════ */
+function updateWeekBadge(){
+  const total = totalItems(), done = countDone();
+  const pct = done/total;
+  const week = Math.min(8, Math.floor(pct*8)+1);
+  document.getElementById('navWeek').textContent = `📅 Неделя ${week}`;
+}
+
+/* ══════════════════════════════
+   INIT
+══════════════════════════════ */
+renderWeeks();
+renderSteps();
+renderTools();
+renderSkills();
+renderBooks();
+renderChecklist();
+updateWeekBadge();
+</script>
+</body>
+</html>
